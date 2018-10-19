@@ -4,58 +4,56 @@ import { connect } from 'react-redux';
 import Search from './Search';
 import Picture from './Picture';
 import PictureSelector from './PictureSelector';
+import {
+  fetchPictures,
+  selectPicture,
+  selectNextPicture,
+  selectPreviousPicture,
+} from '../js/actions/index';
 
 import '../styles/base.scss';
 
 const mapStateToProps = state => ({ pictures: state.pictures });
+
+const mapDispatchToProps = dispatch => ({
+  fetch: searchString => dispatch(fetchPictures(searchString)),
+  select: pictureId => dispatch(selectPicture(pictureId)),
+  selectNext: () => dispatch(selectNextPicture()),
+  selectPrevious: () => dispatch(selectPreviousPicture()),
+});
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedImg: null,
+      searchValue: '',
     };
   }
 
+  handleSearchInputChange = (e) => {
+    const { fetch } = this.props;
+
+    this.setState({ searchValue: e.target.value });
+    fetch(e.target.value);
+  }
+
   handleTeaserBoxClick = (imageId) => {
-    this.setState(props => ({
-      selectedImg: props.pictures.find(obj => obj.id === imageId),
-    }));
+    const { select } = this.props;
+
+    select(imageId);
   }
 
   handleLeftArrowClick = () => {
-    const { selectedImg } = this.state;
-    const { pictures } = this.props;
+    const { selectPrevious } = this.props;
 
-    const imgIndex = pictures.findIndex(obj => obj.id === selectedImg.id);
-
-    if (imgIndex === 0) {
-      this.setState(props => ({
-        selectedImg: props.pictures[props.pictures.length - 1],
-      }));
-    } else {
-      this.setState(props => ({
-        selectedImg: props.pictures[imgIndex - 1],
-      }));
-    }
+    selectPrevious();
   }
 
   handleRightArrowClick = () => {
-    const { selectedImg } = this.state;
-    const { pictures } = this.props;
+    const { selectNext } = this.props;
 
-    const imgIndex = pictures.findIndex(obj => obj.id === selectedImg.id);
-
-    if (imgIndex === pictures.length - 1) {
-      this.setState(props => ({
-        selectedImg: props.pictures[0],
-      }));
-    } else {
-      this.setState(props => ({
-        selectedImg: props.pictures[imgIndex + 1],
-      }));
-    }
+    selectNext();
   }
 
   handleTeaserKeyUp = (e, imageId) => {
@@ -63,7 +61,7 @@ class App extends Component {
 
     const code = (e.keycode ? e.keycode : e.which);
 
-    // Enter
+    // Enter key.
     if (code === 13) {
       this.handleTeaserBoxClick(imageId);
     }
@@ -72,7 +70,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Search />
+        <Search
+          handleSearchInputChange={this.handleSearchInputChange}
+          {...this.props}
+          {...this.state}
+        />
         <Picture
           handleLeftArrowClick={this.handleLeftArrowClick}
           handleRightArrowClick={this.handleRightArrowClick}
@@ -90,4 +92,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

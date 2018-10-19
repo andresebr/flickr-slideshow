@@ -7,7 +7,7 @@ const TeaserBox = ({
   id,
   secret,
   title,
-  selected,
+  isSelected,
   handleTeaserBoxClick,
   handleTeaserKeyUp,
 }) => {
@@ -15,7 +15,7 @@ const TeaserBox = ({
 
   return (
     <div
-      className={selected ? 'thumbnail-container highlight' : 'thumbnail-container'}
+      className={isSelected ? 'thumbnail-container highlight' : 'thumbnail-container'}
       onClick={() => handleTeaserBoxClick(id)}
       onKeyPress={e => handleTeaserKeyUp(e, id)}
       role="button"

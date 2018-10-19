@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import TeaserBox from './TeaserBox';
 
 
-const PictureSelector = ({ pictures, selectedImg, ...props }) => {
-  if (!pictures || pictures.items.length === 0) {
+const PictureSelector = ({ pictures, ...props }) => {
+  const { items, selected, isFetching } = pictures;
+
+  if (items.length === 0) {
     return (
       <div className="selector-container">
         Nothing to show here
@@ -12,7 +14,7 @@ const PictureSelector = ({ pictures, selectedImg, ...props }) => {
     );
   }
 
-  if (pictures && pictures.isFetching) {
+  if (isFetching) {
     return (
       <div className="selector-container">
         Loading stuff
@@ -20,11 +22,11 @@ const PictureSelector = ({ pictures, selectedImg, ...props }) => {
     );
   }
 
-  const thumbs = pictures.items.map(
-    image => (
+  const thumbs = items.map(
+    (image, i) => (
       <TeaserBox
-        key={`${image.id}-${image.title}`}
-        selected={selectedImg && image.id === selectedImg.id}
+        key={`${image.id}-${image.secret}`}
+        isSelected={i === selected}
         {...image}
         {...props}
       />

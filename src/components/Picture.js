@@ -3,22 +3,32 @@ import PropTypes from 'prop-types';
 import NavigationArrow from './NavigationArrow';
 
 
-const Picture = ({ selectedImg, pictures, ...props }) => {
-  if (!selectedImg || !pictures || pictures.items.length === 0) {
+const Picture = ({ pictures, ...props }) => {
+  const { items, selected, isFetching } = pictures;
+
+  if (items.length === 0) {
     return (<div className="picture-container">Nothing to show here</div>);
   }
 
-  if (pictures && pictures.isFetching) {
+  if (isFetching) {
     return (<div className="picture-container">Loading stuff</div>);
   }
 
-  const { id, title, url } = selectedImg;
+  const picture = items[selected];
+  const {
+    farm,
+    server,
+    id,
+    secret,
+  } = picture;
+
+  const url = `http://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
 
   return (
     <div className="picture-container">
-      <NavigationArrow type="left" {...props} />
-      <img alt={id} title={title} src={url} />
-      <NavigationArrow type="right" {...props} />
+      <NavigationArrow type="left" pictures {...props} />
+      <img alt={picture.id} title={picture.title} src={url} />
+      <NavigationArrow type="right" pictures {...props} />
     </div>
   );
 };
