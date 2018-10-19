@@ -5,11 +5,12 @@ import { expect } from 'chai';
 import * as actions from '../../../src/js/actions';
 import * as types from '../../../src/js/constants/action-types';
 
-import photos from '../success-response.json';
+import pics from '../success-response.json';
 import failure from '../failure-response.json';
 
 const middleware = [thunk];
 const mockStore = configureStore(middleware);
+const searchString = 'test';
 
 describe('FETCH_PICTURES actions', () => {
   afterEach(() => {
@@ -20,13 +21,13 @@ describe('FETCH_PICTURES actions', () => {
     fetchMock
       .getOnce(
         'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=undefined&text=test&format=json&nojsoncallback=1',
-        photos,
+        pics,
       );
 
 
     const expectedActions = [
       { type: types.FETCH_PICTURES_REQUEST },
-      { type: types.FETCH_PICTURES_SUCCESS, body: { ...photos } },
+      { type: types.FETCH_PICTURES_SUCCESS, body: pics },
     ];
     const store = mockStore({
       items: [],
@@ -36,7 +37,7 @@ describe('FETCH_PICTURES actions', () => {
       isError: false,
     });
 
-    return store.dispatch(actions.fetchPictures('test')).then(() => {
+    return store.dispatch(actions.fetchPictures(searchString)).then(() => {
       expect(store.getActions()).to.eql(expectedActions);
     });
   });
@@ -64,7 +65,7 @@ describe('FETCH_PICTURES actions', () => {
       isError: false,
     });
 
-    return store.dispatch(actions.fetchPictures('test')).then(() => {
+    return store.dispatch(actions.fetchPictures(searchString)).then(() => {
       expect(store.getActions()).to.eql(expectedActions);
     });
   });
