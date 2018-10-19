@@ -3,4 +3,10 @@
     height: auto;
     display: flex;
     justify-content: center;
+    img {
+        @media screen and (max-width: $break-small) {
+            width: 100%;
+            height: auto
+        }
+    }
 }

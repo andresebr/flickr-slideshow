@@ -1,10 +1,14 @@
 .thumbnail-container {
     margin: $spacing-unit * 5;
+    border-radius: $radius;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 
-    &:hover, &.highlight {
+    &:hover,
+    &.highlight {
         background: blue;
     }
-
     img {
         padding: $spacing-unit * 5;
         max-height: 200px;

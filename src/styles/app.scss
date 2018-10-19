@@ -1,0 +1,17 @@
+@import 'constants';
+
+@import 'search';
+@import 'picture';
+@import 'navigationarrow';
+@import 'selectorcontainer';
+@import 'teaserbox';
+
+.topnav {
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    height: 65px;
+    background: $dark;
+}

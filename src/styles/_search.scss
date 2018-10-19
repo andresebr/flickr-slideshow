@@ -1,9 +1,9 @@
-.topnav {
-    display: flex;
-    top: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    height: 65px;
-    background: rgba($dark, 0.5);
+.search-box {
+    width: 50%;
+    padding: $spacing-unit * 6 $spacing-unit * 10;
+    margin: $spacing-unit * 4 0;
+    display: inline-block;
+    border-radius: $radius;
+    box-sizing: border-box;
+    font-size: $font-size;
 }

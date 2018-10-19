@@ -6,4 +6,6 @@
     height: auto;
     background: $dark;
     color: $light;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }

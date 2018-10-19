@@ -11,7 +11,7 @@ import {
   selectPreviousPicture,
 } from '../js/actions/index';
 
-import '../styles/base.scss';
+import '../styles/app.scss';
 
 const mapStateToProps = state => ({ pictures: state.pictures });
 
@@ -70,11 +70,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Search
-          handleSearchInputChange={this.handleSearchInputChange}
-          {...this.props}
-          {...this.state}
-        />
+        <div className="topnav">
+          <Search
+            handleSearchInputChange={this.handleSearchInputChange}
+            {...this.props}
+            {...this.state}
+          />
+        </div>
         <Picture
           handleLeftArrowClick={this.handleLeftArrowClick}
           handleRightArrowClick={this.handleRightArrowClick}
