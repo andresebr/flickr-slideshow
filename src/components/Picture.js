@@ -4,7 +4,9 @@ import NavigationArrow from './NavigationArrow';
 
 
 const Picture = ({ pictures, ...props }) => {
-  const { items, selected, isFetching } = pictures;
+  const {
+    items, selected, isFetching, isError, error,
+  } = pictures;
 
   if (items.length === 0) {
     return (<div className="picture-container">Nothing to show here</div>);
@@ -12,6 +14,14 @@ const Picture = ({ pictures, ...props }) => {
 
   if (isFetching) {
     return (<div className="picture-container">Loading stuff</div>);
+  }
+
+  if (isError) {
+    return (
+      <div className="picture-container">
+        {error || 'Something went wrong'}
+      </div>
+    );
   }
 
   const picture = items[selected];

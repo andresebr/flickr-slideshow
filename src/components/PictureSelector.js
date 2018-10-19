@@ -4,7 +4,9 @@ import TeaserBox from './TeaserBox';
 
 
 const PictureSelector = ({ pictures, ...props }) => {
-  const { items, selected, isFetching } = pictures;
+  const {
+    items, selected, isFetching, error, isError,
+  } = pictures;
 
   if (items.length === 0) {
     return (
@@ -18,6 +20,14 @@ const PictureSelector = ({ pictures, ...props }) => {
     return (
       <div className="selector-container">
         Loading stuff
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="selector-container">
+        {error || 'Something went wrong'}
       </div>
     );
   }
