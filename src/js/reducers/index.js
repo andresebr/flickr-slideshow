@@ -13,6 +13,7 @@ const initialState = {
   selected: null,
   isFetching: false,
   error: undefined,
+  isError: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -30,7 +31,11 @@ const rootReducer = (state = initialState, action) => {
         },
       );
     case FETCH_PICTURES_ERROR:
-      return Object.assign({}, state, { isFetching: false, error: action.error });
+      return Object.assign(
+        {},
+        state,
+        { isFetching: false, error: action.error, isError: true },
+      );
     case SELECT_PICTURE:
       return Object.assign(
         {},
