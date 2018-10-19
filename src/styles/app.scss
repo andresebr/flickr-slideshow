@@ -1,17 +1,39 @@
 @import 'constants';
-
 @import 'search';
 @import 'picture';
 @import 'navigationarrow';
 @import 'selectorcontainer';
 @import 'teaserbox';
+html {
+    height: 100%;
 
-.topnav {
-    display: flex;
-    top: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    height: 65px;
-    background: $dark;
+    body {
+        margin: 0;
+        background: #888b97;
+        height: 100%;
+
+        #root {
+            height: 100%;
+
+            .container {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .topnav {
+                    display: flex;
+                    justify-content: center;
+                    height: 65px;
+                    background: $dark;
+                }
+
+                .picture-section {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
 }

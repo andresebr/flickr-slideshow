@@ -1,4 +1,4 @@
-.nav {
+.nav-btn {
     position: absolute;
     background-color: #4CAF50;
     border: none;
@@ -13,10 +13,20 @@
     cursor: pointer;
 
     &.left-arrow {
-        left: 0
+        left: 25%
     }
 
     &.right-arrow {
-        right: 0
+        right: 25%
+    }
+
+    @media screen and (max-width: $break-small) {
+        &.left-arrow {
+            left: 0
+        }
+    
+        &.right-arrow {
+            right: 0
+        }
     }
 }

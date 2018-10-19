@@ -69,7 +69,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="topnav">
           <Search
             handleSearchInputChange={this.handleSearchInputChange}
@@ -77,18 +77,22 @@ class App extends Component {
             {...this.state}
           />
         </div>
-        <Picture
-          handleLeftArrowClick={this.handleLeftArrowClick}
-          handleRightArrowClick={this.handleRightArrowClick}
-          {...this.props}
-          {...this.state}
-        />
-        <PictureSelector
-          handleTeaserBoxClick={this.handleTeaserBoxClick}
-          handleTeaserKeyUp={this.handleTeaserKeyUp}
-          {...this.props}
-          {...this.state}
-        />
+        <div className="picture-section">
+          <Picture
+            handleLeftArrowClick={this.handleLeftArrowClick}
+            handleRightArrowClick={this.handleRightArrowClick}
+            {...this.props}
+            {...this.state}
+          />
+        </div>
+        <div className="preview-section">
+          <PictureSelector
+            handleTeaserBoxClick={this.handleTeaserBoxClick}
+            handleTeaserKeyUp={this.handleTeaserKeyUp}
+            {...this.props}
+            {...this.state}
+          />
+        </div>
       </div>
     );
   }

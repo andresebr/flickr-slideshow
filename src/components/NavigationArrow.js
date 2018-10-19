@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const NavigationArrow = ({ type, handleLeftArrowClick, handleRightArrowClick }) => (
   <button
     type="button"
-    className={`nav ${type}-arrow`}
+    className={`nav-btn ${type}-arrow`}
     onClick={type === 'left'
       ? () => handleLeftArrowClick()
       : () => handleRightArrowClick()}

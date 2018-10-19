@@ -8,7 +8,7 @@ const Search = ({ searchValue, handleSearchInputChange }) => (
     placeholder="Search..."
     name="search"
     value={searchValue}
-    debounceTimeout={300}
+    debounceTimeout={400}
     onChange={e => handleSearchInputChange(e)}
   />
 );

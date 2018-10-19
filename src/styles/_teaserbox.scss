@@ -9,9 +9,14 @@
     &.highlight {
         background: blue;
     }
+
     img {
         padding: $spacing-unit * 5;
         max-height: 200px;
-        width: auto
+        width: auto;
+
+        @media screen and (max-width: $break-small) {
+            max-height: 90px;
+        }
     }
 }

@@ -1,8 +1,9 @@
 .picture-container {
     width: 100%;
-    height: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
+
     img {
         @media screen and (max-width: $break-small) {
             width: 100%;
