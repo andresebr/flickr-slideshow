@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Search from './Search';
 import Picture from './Picture';
@@ -97,5 +98,22 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  pictures:
+    PropTypes.shape(
+      {
+        items: PropTypes.arrayOf(PropTypes.shape()),
+        selected: PropTypes.number,
+        isFetching: PropTypes.bool,
+        error: PropTypes.string,
+        isError: PropTypes.bool,
+      },
+    ).isRequired,
+  fetch: PropTypes.func.isRequired,
+  select: PropTypes.func.isRequired,
+  selectNext: PropTypes.func.isRequired,
+  selectPrevious: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

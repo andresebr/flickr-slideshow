@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DebounceInput } from 'react-debounce-input';
 
 const Search = ({ searchValue, handleSearchInputChange }) => (
@@ -12,5 +13,11 @@ const Search = ({ searchValue, handleSearchInputChange }) => (
     onChange={e => handleSearchInputChange(e)}
   />
 );
+
+Search.propTypes = {
+  searchValue: PropTypes.string.isRequired,
+  handleSearchInputChange: PropTypes.func.isRequired,
+};
+
 
 export default Search;

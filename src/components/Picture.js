@@ -39,13 +39,16 @@ const Picture = ({ pictures, ...props }) => {
 };
 
 Picture.propTypes = {
-  selectedImg: PropTypes.shape(
-    {
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    },
-  ).isRequired,
+  pictures:
+    PropTypes.shape(
+      {
+        items: PropTypes.arrayOf(PropTypes.shape()),
+        selected: PropTypes.number,
+        isFetching: PropTypes.bool,
+        error: PropTypes.string,
+        isError: PropTypes.bool,
+      },
+    ).isRequired,
 };
 
 export default Picture;

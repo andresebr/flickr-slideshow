@@ -28,9 +28,11 @@ const TeaserBox = ({
 
 TeaserBox.propTypes = {
   id: PropTypes.string.isRequired,
+  server: PropTypes.string.isRequired,
+  secret: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
+  farm: PropTypes.number.isRequired,
+  isSelected: PropTypes.bool.isRequired,
   handleTeaserBoxClick: PropTypes.func.isRequired,
   handleTeaserKeyUp: PropTypes.func.isRequired,
 };

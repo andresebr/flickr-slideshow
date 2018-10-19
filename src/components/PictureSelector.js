@@ -41,22 +41,16 @@ const PictureSelector = ({ pictures, ...props }) => {
 };
 
 PictureSelector.propTypes = {
-  pictures: PropTypes.arrayOf(
+  pictures:
     PropTypes.shape(
       {
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
+        items: PropTypes.arrayOf(PropTypes.shape()),
+        selected: PropTypes.number,
+        isFetching: PropTypes.bool,
+        error: PropTypes.string,
+        isError: PropTypes.bool,
       },
-    ),
-  ).isRequired,
-  selectedImg: PropTypes.shape(
-    {
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    },
-  ).isRequired,
+    ).isRequired,
 };
 
 
