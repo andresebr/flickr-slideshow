@@ -25,6 +25,10 @@ html {
                     justify-content: center;
                     height: 65px;
                     background: $dark;
+
+                    @media screen and (max-width: $break-small) {
+                        height: 55px;
+                    }
                 }
 
                 .picture-section {
