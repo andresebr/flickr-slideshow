@@ -11,6 +11,7 @@
     margin: $spacing-unit * 2 $spacing-unit;
     border-radius: $radius;
     cursor: pointer;
+    z-index: 100;
 
     &.left-arrow {
         left: 25%

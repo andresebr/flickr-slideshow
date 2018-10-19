@@ -8,9 +8,16 @@
         position: relative;
 
         img {
+            max-height: 50vh;
+            width: auto;
+
             @media screen and (max-width: $break-small) {
-                width: 100%;
+                max-height: 60vh;
                 height: auto;
+            }
+
+            @media screen and (max-height: $break-medium) {
+                max-height: 100vh - 30;
             }
         }
         .caption {
