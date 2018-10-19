@@ -27,7 +27,12 @@ const Picture = ({ pictures, ...props }) => {
   return (
     <div className="picture-container">
       <NavigationArrow type="left" pictures {...props} />
-      <img alt={picture.id} title={picture.title} src={url} />
+      <div className="selected-picture">
+        <img alt={picture.id} title={picture.title} src={url} />
+        <div className="caption">
+          <p>{picture.title}</p>
+        </div>
+      </div>
       <NavigationArrow type="right" pictures {...props} />
     </div>
   );

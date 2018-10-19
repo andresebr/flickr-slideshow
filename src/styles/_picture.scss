@@ -4,10 +4,27 @@
     justify-content: center;
     align-items: center;
 
-    img {
-        @media screen and (max-width: $break-small) {
+    .selected-picture {
+        position: relative;
+
+        img {
+            @media screen and (max-width: $break-small) {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .caption {
+            position: absolute;
+            bottom: $spacing-unit * 2;
+            background: $dark;
+            color: #fff;
             width: 100%;
-            height: auto
+            background: rgba($dark, .5);
+
+            p{
+                margin-left: $spacing-unit * 5;
+                margin-right: $spacing-unit * 5;
+            }
         }
     }
 }
