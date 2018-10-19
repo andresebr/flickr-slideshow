@@ -2,6 +2,9 @@ import {
   FETCH_PICTURES_REQUEST,
   FETCH_PICTURES_SUCCESS,
   FETCH_PICTURES_ERROR,
+  SELECT_PICTURE,
+  SELECT_NEXT_PICTURE,
+  SELECT_PREVIOUS_PICTURE,
 } from '../constants/action-types';
 
 export const fetchPictures = searchString => (dispatch) => {
@@ -19,3 +22,9 @@ export const fetchPictures = searchString => (dispatch) => {
       }
     });
 };
+
+export const selectPicture = pictureId => ({ type: SELECT_PICTURE, payload: pictureId });
+
+export const selectNextPicture = () => ({ type: SELECT_NEXT_PICTURE });
+
+export const selectPreviousPicture = () => ({ type: SELECT_PREVIOUS_PICTURE });

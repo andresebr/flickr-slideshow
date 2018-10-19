@@ -18,13 +18,6 @@ class App extends Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.pictures.ite !== prevProps.userID) {
-      this.fetchData(this.props.userID);
-    }
-  }
-
   handleTeaserBoxClick = (imageId) => {
     this.setState(props => ({
       selectedImg: props.pictures.find(obj => obj.id === imageId),
