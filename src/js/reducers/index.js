@@ -25,7 +25,7 @@ const rootReducer = (state = initialState, action) => {
         state,
         {
           isFetching: false,
-          items: action.photo,
+          items: action.body.photos.photo,
           selected: 0,
         },
       );

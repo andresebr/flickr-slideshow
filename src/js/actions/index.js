@@ -7,18 +7,35 @@ import {
   SELECT_PREVIOUS_PICTURE,
 } from '../constants/action-types';
 
+function fetchPicturesRequest() {
+  return {
+    type: FETCH_PICTURES_REQUEST,
+  };
+}
+
+function fetchPicturesSuccess(body) {
+  return {
+    type: FETCH_PICTURES_SUCCESS,
+    body,
+  };
+}
+
+function fetchPicturesError(error) {
+  return {
+    type: FETCH_PICTURES_ERROR,
+    error,
+  };
+}
+
 export const fetchPictures = searchString => (dispatch) => {
-  dispatch({ type: FETCH_PICTURES_REQUEST });
+  dispatch(fetchPicturesRequest());
   return fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${process.env.FLICKR_API_KEY}&text=${searchString}&format=json&nojsoncallback=1`)
     .then(response => response.json().then(body => ({ response, body })))
     .then(({ response, body }) => {
       if (body.stat === 'fail' || !response.ok) {
-        dispatch({
-          type: FETCH_PICTURES_ERROR,
-          error: body.message,
-        });
+        dispatch(fetchPicturesError(body.message));
       } else {
-        dispatch({ type: FETCH_PICTURES_SUCCESS, ...body.photos });
+        dispatch(fetchPicturesSuccess(body));
       }
     });
 };
