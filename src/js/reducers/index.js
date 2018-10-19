@@ -43,7 +43,6 @@ const rootReducer = (state = initialState, action) => {
         { selected: state.items.findIndex(obj => obj.id === action.payload) },
       );
     case SELECT_NEXT_PICTURE:
-      console.log(state);
       return Object.assign(
         {},
         state,
