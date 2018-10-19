@@ -3,11 +3,32 @@ import PropTypes from 'prop-types';
 import TeaserBox from './TeaserBox';
 
 
-const PictureSelector = ({ items, selectedImg, ...props }) => {
-  const { id } = selectedImg;
+const PictureSelector = ({ pictures, selectedImg, ...props }) => {
+  if (!pictures || pictures.items.length === 0) {
+    return (
+      <div className="selector-container">
+        Nothing to show here
+      </div>
+    );
+  }
 
-  const thumbs = items.map(
-    image => <TeaserBox key={`${image.id}-${image.title}`} selected={image.id === id} {...image} {...props} />,
+  if (pictures && pictures.isFetching) {
+    return (
+      <div className="selector-container">
+        Loading stuff
+      </div>
+    );
+  }
+
+  const thumbs = pictures.items.map(
+    image => (
+      <TeaserBox
+        key={`${image.id}-${image.title}`}
+        selected={selectedImg && image.id === selectedImg.id}
+        {...image}
+        {...props}
+      />
+    ),
   );
 
   return (
@@ -18,7 +39,7 @@ const PictureSelector = ({ items, selectedImg, ...props }) => {
 };
 
 PictureSelector.propTypes = {
-  items: PropTypes.arrayOf(
+  pictures: PropTypes.arrayOf(
     PropTypes.shape(
       {
         id: PropTypes.string.isRequired,

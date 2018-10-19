@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Search from './Search';
 import Picture from './Picture';
@@ -6,57 +7,60 @@ import PictureSelector from './PictureSelector';
 
 import '../styles/base.scss';
 
-const images = [
-  { id: '1', title: 'placheolder 1', url: 'https://via.placeholder.com/250x250' },
-  { id: '2', title: 'placheolder 2', url: 'https://via.placeholder.com/300x250' },
-  { id: '3', title: 'placheolder 4', url: 'https://via.placeholder.com/150x250' },
-  { id: '4', title: 'placheolder 5', url: 'https://via.placeholder.com/250x300' },
-  { id: '5', title: 'placheolder 6', url: 'https://via.placeholder.com/250x150' }];
+const mapStateToProps = state => ({ pictures: state.pictures });
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      items: images,
-      selectedImg: images[0],
+      selectedImg: null,
     };
   }
 
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.pictures.ite !== prevProps.userID) {
+      this.fetchData(this.props.userID);
+    }
+  }
+
   handleTeaserBoxClick = (imageId) => {
-    this.setState(state => ({
-      selectedImg: state.items.find(obj => obj.id === imageId),
+    this.setState(props => ({
+      selectedImg: props.pictures.find(obj => obj.id === imageId),
     }));
   }
 
   handleLeftArrowClick = () => {
-    const { items, selectedImg } = this.state;
+    const { selectedImg } = this.state;
+    const { pictures } = this.props;
 
-    const imgIndex = items.findIndex(obj => obj.id === selectedImg.id);
+    const imgIndex = pictures.findIndex(obj => obj.id === selectedImg.id);
 
     if (imgIndex === 0) {
-      this.setState(state => ({
-        selectedImg: state.items[state.items.length - 1],
+      this.setState(props => ({
+        selectedImg: props.pictures[props.pictures.length - 1],
       }));
     } else {
-      this.setState(state => ({
-        selectedImg: state.items[imgIndex - 1],
+      this.setState(props => ({
+        selectedImg: props.pictures[imgIndex - 1],
       }));
     }
   }
 
   handleRightArrowClick = () => {
-    const { items, selectedImg } = this.state;
+    const { selectedImg } = this.state;
+    const { pictures } = this.props;
 
-    const imgIndex = items.findIndex(obj => obj.id === selectedImg.id);
+    const imgIndex = pictures.findIndex(obj => obj.id === selectedImg.id);
 
-    if (imgIndex === items.length - 1) {
-      this.setState(state => ({
-        selectedImg: state.items[0],
+    if (imgIndex === pictures.length - 1) {
+      this.setState(props => ({
+        selectedImg: props.pictures[0],
       }));
     } else {
-      this.setState(state => ({
-        selectedImg: state.items[imgIndex + 1],
+      this.setState(props => ({
+        selectedImg: props.pictures[imgIndex + 1],
       }));
     }
   }
@@ -79,11 +83,13 @@ class App extends Component {
         <Picture
           handleLeftArrowClick={this.handleLeftArrowClick}
           handleRightArrowClick={this.handleRightArrowClick}
+          {...this.props}
           {...this.state}
         />
         <PictureSelector
           handleTeaserBoxClick={this.handleTeaserBoxClick}
           handleTeaserKeyUp={this.handleTeaserKeyUp}
+          {...this.props}
           {...this.state}
         />
       </div>
@@ -91,4 +97,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

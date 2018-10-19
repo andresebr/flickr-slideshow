@@ -2,23 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TeaserBox = ({
+  farm,
+  server,
   id,
+  secret,
   title,
-  url,
   selected,
   handleTeaserBoxClick,
   handleTeaserKeyUp,
-}) => (
-  <div
-    className={selected ? 'thumbnail-container highlight' : 'thumbnail-container'}
-    onClick={() => handleTeaserBoxClick(id)}
-    onKeyPress={e => handleTeaserKeyUp(e, id)}
-    role="button"
-    tabIndex="0"
-  >
-    <img alt={id} title={title} src={url} />
-  </div>
-);
+}) => {
+  const url = `http://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+
+  return (
+    <div
+      className={selected ? 'thumbnail-container highlight' : 'thumbnail-container'}
+      onClick={() => handleTeaserBoxClick(id)}
+      onKeyPress={e => handleTeaserKeyUp(e, id)}
+      role="button"
+      tabIndex="0"
+    >
+      <img alt={id} title={title} src={url} />
+    </div>
+  );
+};
 
 TeaserBox.propTypes = {
   id: PropTypes.string.isRequired,
