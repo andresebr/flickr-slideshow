@@ -8,17 +8,17 @@ __IMPORTANT!!!__ Be sure to update `.env` with your [Flickr API key](https://www
 1. Install project dependencies:
 
 
-`npm install`
+   `npm install`
 
 
 2. After updating `.env` and finishing installing all dependencies:
 
 
 
-`npm start`
+   `npm start`
 
 
-This will open up Google Chrome and load the application. If you rather use a your default browser, you can modify the `start` script in `package.json`. 
+   This will open up Google Chrome and load the application. If you rather use a your default browser, you can modify the `start` script in `package.json`. 
 
 ## Run tests
 `npm run test`
