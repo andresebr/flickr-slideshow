@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faImage, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import NavigationArrow from './NavigationArrow';
 
 
@@ -14,22 +14,30 @@ const Picture = ({ pictures, ...props }) => {
     return (
       <div className="picture-container">
         <div className="message">
-          <FontAwesomeIcon icon={faCoffee} />
-          {' '}
-          Nothing to show here
+          <FontAwesomeIcon icon={faImage} />
         </div>
       </div>
     );
   }
 
   if (isFetching) {
-    return (<div className="picture-container">Loading stuff</div>);
+    return (
+      <div className="picture-container">
+        <div className="message">
+          <FontAwesomeIcon icon={faSpinner} spin />
+        </div>
+      </div>
+    );
   }
 
   if (isError) {
     return (
       <div className="picture-container">
-        {error || 'Something went wrong'}
+        <div className="message">
+          <FontAwesomeIcon icon={faExclamationTriangle} />
+          {' '}
+          <span>{error || 'Something went wrong'}</span>
+        </div>
       </div>
     );
   }

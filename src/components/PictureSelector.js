@@ -5,31 +5,14 @@ import TeaserBox from './TeaserBox';
 
 const PictureSelector = ({ pictures, ...props }) => {
   const {
-    items, selected, isFetching, error, isError,
+    items,
+    selected,
+    isFetching,
+    isError,
   } = pictures;
 
-  if (items.length === 0) {
-    return (
-      <div className="selector-container">
-        Nothing to show here
-      </div>
-    );
-  }
-
-  if (isFetching) {
-    return (
-      <div className="selector-container">
-        Loading stuff
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="selector-container">
-        {error || 'Something went wrong'}
-      </div>
-    );
+  if (items.length === 0 || isFetching || isError) {
+    return null;
   }
 
   const thumbs = items.map(
