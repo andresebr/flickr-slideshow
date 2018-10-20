@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const NavigationArrow = ({ type, handleLeftArrowClick, handleRightArrowClick }) => (
@@ -10,7 +12,7 @@ const NavigationArrow = ({ type, handleLeftArrowClick, handleRightArrowClick }) 
       ? () => handleLeftArrowClick()
       : () => handleRightArrowClick()}
   >
-    {type === 'left' ? '<' : '>'}
+    {type === 'left' ? <FontAwesomeIcon icon={faAngleLeft} /> : <FontAwesomeIcon icon={faAngleRight} />}
   </button>
 );
 

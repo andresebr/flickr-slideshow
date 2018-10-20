@@ -9,7 +9,7 @@ const TeaserBox = ({
   title,
   isSelected,
   handleTeaserBoxClick,
-  handleTeaserKeyUp,
+  handleTeaserKeyPress,
 }) => {
   const url = `http://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
 
@@ -17,7 +17,7 @@ const TeaserBox = ({
     <div
       className={isSelected ? 'thumbnail-container highlight' : 'thumbnail-container'}
       onClick={() => handleTeaserBoxClick(id)}
-      onKeyPress={e => handleTeaserKeyUp(e, id)}
+      onKeyPress={e => handleTeaserKeyPress(e, id)}
       role="button"
       tabIndex="0"
     >
@@ -34,7 +34,7 @@ TeaserBox.propTypes = {
   farm: PropTypes.number.isRequired,
   isSelected: PropTypes.bool.isRequired,
   handleTeaserBoxClick: PropTypes.func.isRequired,
-  handleTeaserKeyUp: PropTypes.func.isRequired,
+  handleTeaserKeyPress: PropTypes.func.isRequired,
 };
 
 export default TeaserBox;

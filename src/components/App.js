@@ -57,7 +57,7 @@ class App extends Component {
     selectNext();
   }
 
-  handleTeaserKeyUp = (e, imageId) => {
+  handleTeaserKeyPress = (e, imageId) => {
     e.preventDefault();
 
     const code = (e.keycode ? e.keycode : e.which);
@@ -89,7 +89,7 @@ class App extends Component {
         <div className="preview-section">
           <PictureSelector
             handleTeaserBoxClick={this.handleTeaserBoxClick}
-            handleTeaserKeyUp={this.handleTeaserKeyUp}
+            handleTeaserKeyPress={this.handleTeaserKeyPress}
             {...this.props}
             {...this.state}
           />
