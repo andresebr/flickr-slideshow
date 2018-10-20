@@ -9,7 +9,7 @@ html {
 
     body {
         margin: 0;
-        background: #888b97;
+        background: $background;
         height: 100%;
 
         #root {
@@ -24,7 +24,7 @@ html {
                     display: flex;
                     justify-content: center;
                     height: 65px;
-                    background: $dark;
+                    background: $primary;
 
                     @media screen and (max-width: $break-small) {
                         height: 55px;

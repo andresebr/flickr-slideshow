@@ -1,8 +1,8 @@
 .nav-btn {
     position: absolute;
-    background-color: #4CAF50;
+    background: $secondary;
     border: none;
-    color: white;
+    color: $contrast;
     padding: $spacing-unit * 10;
     text-align: center;
     text-decoration: none;
@@ -14,20 +14,24 @@
     z-index: 100;
 
     &.left-arrow {
-        left: 25%
+        left: 0;
+        margin-left: $spacing-unit * 50;
     }
 
     &.right-arrow {
-        right: 25%
+        right: 0;
+        margin-right: $spacing-unit * 50;
     }
 
     @media screen and (max-width: $break-small) {
+        background: rgba($secondary, .7);
+
         &.left-arrow {
-            left: 0
+            margin-left: 0;
         }
-    
+
         &.right-arrow {
-            right: 0
+            margin-right: 0;
         }
     }
 }

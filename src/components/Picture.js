@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import NavigationArrow from './NavigationArrow';
 
 
@@ -9,7 +11,15 @@ const Picture = ({ pictures, ...props }) => {
   } = pictures;
 
   if (items.length === 0) {
-    return (<div className="picture-container">Nothing to show here</div>);
+    return (
+      <div className="picture-container">
+        <div className="message">
+          <FontAwesomeIcon icon={faCoffee} />
+          {' '}
+          Nothing to show here
+        </div>
+      </div>
+    );
   }
 
   if (isFetching) {

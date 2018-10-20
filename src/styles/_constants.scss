@@ -1,10 +1,16 @@
 $break-small: 480px;
 $break-xsmall: 480px;
 $break-medium: 600px;
-
 $spacing-unit: 2px;
 $radius: 4px;
 $font-size: 24px;
-
-$dark: #000;
-$light: #fff;
+$primary: #212121;
+$primary-light: lighten( $primary, 10%);
+$primary-dark: darken( $primary, 10%);
+$secondary: #0d46a0;
+$secondary-light: lighten( $secondary, 10%);
+$secondary-dark: darken( $secondary, 10%);
+$contrast: #fff;
+$black: #000;
+$background: #94959c;
+$panel-background: #e5e6e5;

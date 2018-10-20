@@ -4,6 +4,14 @@
     justify-content: center;
     align-items: center;
 
+    .message {
+        background: $primary;
+        color: $contrast;
+        padding: $spacing-unit * 20;
+        border-radius: $radius;
+        font-size: $font-size;
+    }
+
     .selected-picture {
         position: relative;
 
@@ -23,10 +31,10 @@
         .caption {
             position: absolute;
             bottom: $spacing-unit * 2;
-            background: $dark;
-            color: #fff;
+            background: $primary;
+            color: $contrast;
             width: 100%;
-            background: rgba($dark, .5);
+            background: rgba($primary, .5);
 
             p{
                 margin-left: $spacing-unit * 5;

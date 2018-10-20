@@ -5,9 +5,17 @@
     justify-content: center;
     flex-direction: column;
 
-    &:hover,
+    &:hover {
+        background: $secondary-dark;
+    }
+
     &.highlight {
-        background: blue;
+        background: $secondary-light;
+    }
+
+    &:focus {
+        background: $secondary-dark;
+        outline: none;
     }
 
     @media screen and (max-height: $break-medium) {
