@@ -2,8 +2,8 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 import { expect } from 'chai';
-import * as actions from '../../../src/js/actions';
-import * as types from '../../../src/js/constants/action-types';
+import * as actions from '../../src/js/actions';
+import * as types from '../../src/js/constants/action-types';
 
 import pics from '../success-response.json';
 import failure from '../failure-response.json';

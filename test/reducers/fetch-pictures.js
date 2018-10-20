@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import reducer from '../../../src/js/reducers';
-import * as types from '../../../src/js/constants/action-types';
+import reducer from '../../src/js/reducers';
+import * as types from '../../src/js/constants/action-types';
 
 import pics from '../success-response.json';
 import failure from '../failure-response.json';

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import * as actions from '../../../src/js/actions';
-import * as types from '../../../src/js/constants/action-types';
+import * as actions from '../../src/js/actions';
+import * as types from '../../src/js/constants/action-types';
 
 describe('SELECT actions', () => {
   it('should create SELECT_PICTURE action', () => {
