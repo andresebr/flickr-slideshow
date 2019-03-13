@@ -18,7 +18,7 @@ __IMPORTANT!!!__ Be sure to update `.env` with your [Flickr API key](https://www
    `npm start`
 
 
-   This will open up Google Chrome and load the application. If you rather use a your default browser, you can modify the `start` script in `package.json`. 
+   This will open up Google Chrome and load the application. If you rather use your preferred browser, you can modify the `start` script in `package.json`. 
 
 ## Run tests
 `npm run test`
